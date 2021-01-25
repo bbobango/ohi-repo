@@ -27,4 +27,13 @@ visit_16 <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science
 #All Nationally designated sites in Massachusetts
 mass <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/mass.csv")
 ```
+```{r}
+ggplot(data = se) +
+    geom_point(aes(x = year, y = visitors/1000000, color = state)) +
+    labs( x = 'Year', y = 'Visitors in millions', title = 'Park Visitation') +
+    theme_light(base_size = 10) +
+    theme(legend.title = element_blank(), 
+          axis.text.x = element_text(angle = 45, hjust = 1, size = 6)) +
+    scale_x_continuous(n.breaks = 50) + scale_y_continuous(n.breaks = 20)
+```
 
