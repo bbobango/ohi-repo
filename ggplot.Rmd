@@ -52,5 +52,24 @@ g <- ggplot(data = visit_16, aes(x = state, y = visitors, fill = park_name)) +
     coord_flip() +
     scale_fill_manual(values = colorRampPalette(brewer.pal(9, "Greens"))(colourCount))
 g
+
+ggsave("national_parks.png", g, width = 15, height = 10)
+
+```
+```{r}
+library(plotly)
+
+ggplotly(g)
+
+acad_vis <- ggplot(data = acadia, aes(x = year, y = visitors)) + 
+  geom_point() +
+  geom_line() +
+  geom_smooth(color = "red") +
+  labs(title = "Acadia National Park Visitation",
+       y = "Visitation",
+       x = "Year") +
+  theme_bw()
+
+ggplotly(acad_vis)
 ```
 
