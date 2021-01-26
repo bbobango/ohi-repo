@@ -36,4 +36,21 @@ ggplot(data = se) +
           axis.text.x = element_text(angle = 45, hjust = 1, size = 6)) +
     scale_x_continuous(n.breaks = 50) + scale_y_continuous(n.breaks = 20)
 ```
+```{r}
+library(RColorBrewer)
+library(colorRamps)
+
+## See available palettes
+display.brewer.all()
+
+## You need to expand palette size
+colourCount <- length(unique(visit_16$park_name)) # number of levels
+getPalette <- colorRampPalette(brewer.pal(9, "Spectral"))
+
+g <- ggplot(data = visit_16, aes(x = state, y = visitors, fill = park_name)) +
+    geom_col() +
+    coord_flip() +
+    scale_fill_manual(values = colorRampPalette(brewer.pal(9, "Greens"))(colourCount))
+g
+```
 
