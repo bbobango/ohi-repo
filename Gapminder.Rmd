@@ -1,0 +1,27 @@
+---
+title: "gapminder-wrangle"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+gapminder <- read.csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/gapminder.csv')
+
+#simple filter
+filter(gapminder, country == 'Bulgaria')
+
+#filter on multiple (or range with ':') values of a variable
+filter(gapminder, country %in% c('Bulgaria', 'Mexico'))
+
+#filter on multiple variables
+filter(gapminder, country == 'Bulgaria', year == 2002)
+
+#Brazil data between 1987 and 2007.
+life_exp_Brazil <- filter(gapminder, country == 'Brazil', year %in% c(1987:2007))
+
+#Mean of the life expectancy of Brazil between 1987 and 2007.
+mean(life_exp_Brazil$lifeExp)
+```
+
+## R Markdown
